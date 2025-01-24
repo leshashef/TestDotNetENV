@@ -1,7 +1,11 @@
+//dotnet run --launch-profile https
+//dotnet run --launch-profile http
+
 var builder = WebApplication.CreateBuilder(args);
 
+var env = Environment.GetEnvironmentVariable("ENV");
 // Add services to the container.
-DotNetEnv.Env.Load();
+DotNetEnv.Env.Load($"{env}.env");
 
 var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__DBCon");
 if (string.IsNullOrEmpty(connectionString))
