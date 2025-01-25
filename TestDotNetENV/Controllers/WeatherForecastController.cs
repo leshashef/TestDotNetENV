@@ -21,6 +21,9 @@ namespace TestDotNetENV.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
+            var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__DBCon");
+            Console.WriteLine(connectionString);
+
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
